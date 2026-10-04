@@ -242,22 +242,34 @@ document.getElementById('leadForm').addEventListener('submit', function(e){
   btn.textContent = 'Отправляю…';
   btn.disabled = true;
 
+  var data = Object.fromEntries(new FormData(form));
+
+  fetch('/api/telegram', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: data.name,
+      phone: data.phone,
+      message: data.message || ''
+    })
+  }).catch(function(err){ console.log('TG error:', err); });
+
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    body: JSON.stringify(data)
   })
   .then(function(r){ return r.json(); })
-  .then(function(data){
+  .then(function(res){
     form.reset();
     btn.textContent = original;
     btn.disabled = false;
-    if (data.success) {
+    if (res.success) {
       document.getElementById('formSuccess').classList.add('show');
       if (navigator.vibrate) navigator.vibrate(35);
       setTimeout(function(){ document.getElementById('formSuccess').classList.remove('show'); }, 7000);
     } else {
-      alert('Не удалось отправить: ' + (data.message || 'попробуйте ещё раз'));
+      alert('Не удалось отправить: ' + (res.message || 'попробуйте ещё раз'));
     }
   })
   .catch(function(){
