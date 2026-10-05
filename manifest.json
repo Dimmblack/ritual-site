@@ -6,8 +6,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#14161b",
-  "theme_color": "#14161b",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
   "lang": "ru",
   "icons": [
     {
@@ -29,4 +29,4 @@
       "purpose": "maskable"
     }
   ]
-}ы
+}
