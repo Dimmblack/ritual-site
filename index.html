@@ -233,20 +233,31 @@
     border:1px solid var(--border);
     border-radius:16px;
     padding:24px 20px;
-    text-align:center;
+    text-align:left;
     box-shadow:var(--shadow-card);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
   }
-  .trust-item .big{
-    font-size:32px;font-weight:600;
-    letter-spacing:-0.8px;
-    line-height:1.1;
-    margin-bottom:6px;
+  .trust-item .ico{
+    width:40px;height:40px;border-radius:12px;
+    background:var(--brand-tint);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--brand);
+    flex-shrink:0;
+  }
+  .trust-item .ico svg{width:20px;height:20px}
+  .trust-item .ttl{
+    font-size:17px;font-weight:600;
+    letter-spacing:-0.3px;
+    line-height:1.25;
     color:var(--text);
+    margin-bottom:4px;
   }
   .trust-item .lbl{
-    font-size:13px;
+    font-size:13.5px;
     color:var(--text-2);
-    line-height:1.45;
+    line-height:1.5;
   }
 
   .contact-box{
@@ -480,10 +491,34 @@
     <h2 class="section-title">Почему мне доверяют</h2>
     <p class="section-sub">Работаю официально, говорю прямо и не навязываю лишнего.</p>
     <div class="trust">
-      <div class="trust-item"><div class="big">24/7</div><div class="lbl">доступен круглосуточно</div></div>
-      <div class="trust-item"><div class="big">Все</div><div class="lbl">кладбища города и области</div></div>
-      <div class="trust-item"><div class="big">Мир</div><div class="lbl">груз 200 в любую точку</div></div>
-      <div class="trust-item"><div class="big">0 ₽</div><div class="lbl">консультация и смета</div></div>
+      <div class="trust-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div>
+          <div class="ttl">Круглосуточно</div>
+          <div class="lbl">Отвечаю 24/7, без выходных</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <div class="ttl">Все кладбища</div>
+          <div class="lbl">Города и области</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div>
+        <div>
+          <div class="ttl">Груз 200</div>
+          <div class="lbl">В любую точку мира</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div>
+          <div class="ttl">Бесплатно</div>
+          <div class="lbl">Консультация и смета</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
