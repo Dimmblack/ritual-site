@@ -34,9 +34,10 @@
     --shadow-btn:0 1px 2px rgba(0,0,0,0.5);
     --safe-b:env(safe-area-inset-bottom,0px);
     --safe-t:env(safe-area-inset-top,0px);
+    --tabbar-h:76px;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;height:100%}
   body{
     font-family:'Inter',system-ui,-apple-system,sans-serif;
     background:var(--bg);
@@ -45,34 +46,57 @@
     font-size:16px;
     font-weight:400;
     overflow-x:hidden;
-    padding-bottom:calc(84px + var(--safe-b));
+    min-height:100%;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
   }
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  button{font-family:inherit}
 
-  .hero{
+  /* APP SHELL */
+  .app{
+    max-width:480px;
+    margin:0 auto;
+    min-height:100vh;
     position:relative;
-    padding:calc(56px + var(--safe-t)) 0 64px;
-    background:
-      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(24,226,153,0.16) 0%, transparent 60%),
-      radial-gradient(ellipse 80% 50% at 50% 10%, rgba(24,226,153,0.06) 0%, transparent 55%),
-      var(--bg);
-    border-bottom:1px solid var(--border);
-    overflow:hidden;
+    background:var(--bg);
   }
-  .hero-inner{position:relative;text-align:center}
+
+  /* SCREENS */
+  .screen{
+    padding:calc(20px + var(--safe-t)) 20px calc(var(--tabbar-h) + 24px + var(--safe-b));
+    min-height:100vh;
+    animation:fadeIn .25s ease;
+  }
+  .screen[hidden]{display:none}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  /* HERO (home) */
+  .hero{
+    text-align:center;
+    padding:32px 0 24px;
+    position:relative;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-40px;left:50%;transform:translateX(-50%);
+    width:120%;height:300px;
+    background:radial-gradient(ellipse 70% 60% at 50% 30%, rgba(24,226,153,0.18) 0%, transparent 65%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero > *{position:relative;z-index:1}
 
   .status{
-    display:inline-flex;align-items:center;gap:8px;
+    display:inline-flex;align-items:center;gap:7px;
     padding:5px 12px;border-radius:9999px;
     background:var(--brand-tint);
     color:var(--brand);
     font-family:'Geist Mono',monospace;
-    font-size:12px;font-weight:500;letter-spacing:0.6px;
+    font-size:11px;font-weight:500;letter-spacing:0.6px;
     text-transform:uppercase;
-    margin-bottom:32px;
+    margin-bottom:24px;
     border:1px solid rgba(24,226,153,0.25);
   }
   .dot{
@@ -88,45 +112,45 @@
   }
 
   .avatar{
-    width:112px;height:112px;border-radius:50%;
-    margin:0 auto 28px;
+    width:100px;height:100px;border-radius:50%;
+    margin:0 auto 20px;
     background:var(--bg-3);
     border:1px solid var(--border-2);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Inter',sans-serif;
-    font-size:36px;font-weight:600;
+    font-size:32px;font-weight:600;
     letter-spacing:-0.8px;
     color:var(--text);
   }
 
   .hero h1{
-    font-size:clamp(36px,10vw,56px);
+    font-size:30px;
     font-weight:600;
     line-height:1.15;
-    letter-spacing:-1.28px;
-    margin-bottom:12px;
+    letter-spacing:-1px;
+    margin-bottom:8px;
   }
   .hero .role{
     display:inline-block;
     font-family:'Geist Mono',monospace;
-    font-size:12px;font-weight:500;letter-spacing:0.6px;
+    font-size:11px;font-weight:500;letter-spacing:0.6px;
     text-transform:uppercase;
     color:var(--text-3);
-    margin-bottom:20px;
+    margin-bottom:16px;
   }
   .hero .lead{
     color:var(--text-2);
-    font-size:18px;
+    font-size:15px;
     line-height:1.5;
-    max-width:480px;
+    max-width:360px;
     margin:0 auto;
   }
 
   .hero-actions{
     display:flex;flex-direction:column;gap:10px;
-    margin-top:36px;
+    margin-top:28px;
   }
 
+  /* BUTTONS */
   .btn{
     display:flex;align-items:center;justify-content:center;gap:10px;
     min-height:52px;padding:10px 24px;
@@ -154,140 +178,120 @@
     border-color:var(--border-2);
   }
   .btn-outline:hover{opacity:.9;border-color:rgba(255,255,255,0.22)}
-  .btn-wa{
-    background:transparent;
-    color:var(--text);
-    border-color:var(--border-2);
-  }
 
-  section{padding:64px 0}
+  /* SECTION */
+  .section-head{
+    padding:8px 0 20px;
+  }
   .section-title{
-    font-size:clamp(28px,6vw,40px);
+    font-size:28px;
     font-weight:600;
-    line-height:1.1;
+    line-height:1.15;
     letter-spacing:-0.8px;
-    margin-bottom:10px;
+    margin-bottom:6px;
   }
   .section-sub{
     color:var(--text-2);
-    font-size:16px;
+    font-size:14.5px;
     line-height:1.5;
-    margin-bottom:32px;
-    max-width:520px;
+    max-width:400px;
   }
-  .divider{height:1px;background:var(--border)}
 
-  .cards{display:grid;gap:12px}
+  /* CARDS */
+  .cards{display:grid;gap:10px}
   .card{
     background:var(--bg-2);
     border:1px solid var(--border);
     border-radius:16px;
-    padding:24px;
+    padding:18px;
     box-shadow:var(--shadow-card);
     transition:border-color .2s ease;
   }
   .card:hover{border-color:var(--border-2)}
   .card h3{
-    font-size:20px;font-weight:600;
+    font-size:16px;font-weight:600;
     letter-spacing:-0.2px;
     line-height:1.3;
-    margin-bottom:6px;
-  }
-  .card p{
-    font-size:14px;
-    color:var(--text-2);
-    line-height:1.55;
-  }
-
-  .steps{display:grid;gap:0}
-  .step{
-    display:flex;gap:20px;
-    padding:24px 0;
-    border-bottom:1px solid var(--border);
-  }
-  .step:last-child{border-bottom:none}
-  .step .num{
-    font-family:'Geist Mono',monospace;
-    font-size:12px;font-weight:500;
-    letter-spacing:0.6px;
-    text-transform:uppercase;
-    color:var(--brand);
-    width:36px;flex-shrink:0;
-    padding-top:6px;
-  }
-  .step h3{
-    font-size:18px;font-weight:600;
-    letter-spacing:-0.2px;
-    line-height:1.3;
-    margin-bottom:6px;
-  }
-  .step p{
-    font-size:14px;
-    color:var(--text-2);
-    line-height:1.55;
-  }
-
-  .trust{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-  .trust-item{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:24px 20px;
-    text-align:left;
-    box-shadow:var(--shadow-card);
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-  }
-  .trust-item .ico{
-    width:40px;height:40px;border-radius:12px;
-    background:var(--brand-tint);
-    display:flex;align-items:center;justify-content:center;
-    color:var(--brand);
-    flex-shrink:0;
-  }
-  .trust-item .ico svg{width:20px;height:20px}
-  .trust-item .ttl{
-    font-size:17px;font-weight:600;
-    letter-spacing:-0.3px;
-    line-height:1.25;
-    color:var(--text);
     margin-bottom:4px;
   }
-  .trust-item .lbl{
+  .card p{
     font-size:13.5px;
     color:var(--text-2);
     line-height:1.5;
   }
 
-  .contact-box{
+  /* STEPS */
+  .steps{display:grid;gap:0}
+  .step{
+    display:flex;gap:16px;
+    padding:20px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .step:last-child{border-bottom:none}
+  .step .num{
+    font-family:'Geist Mono',monospace;
+    font-size:11px;font-weight:500;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    color:var(--brand);
+    width:32px;flex-shrink:0;
+    padding-top:4px;
+  }
+  .step h3{
+    font-size:15.5px;font-weight:600;
+    letter-spacing:-0.2px;
+    line-height:1.3;
+    margin-bottom:4px;
+  }
+  .step p{
+    font-size:13.5px;
+    color:var(--text-2);
+    line-height:1.5;
+  }
+
+  /* TRUST */
+  .trust{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .trust-item{
     background:var(--bg-2);
     border:1px solid var(--border);
-    border-radius:24px;
-    padding:32px 24px;
+    border-radius:16px;
+    padding:18px 16px;
+    text-align:left;
     box-shadow:var(--shadow-card);
-    text-align:center;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
   }
-  .contact-box h2{
-    font-size:28px;font-weight:600;
-    letter-spacing:-0.5px;
-    line-height:1.15;
-    margin-bottom:10px;
+  .trust-item .ico{
+    width:36px;height:36px;border-radius:10px;
+    background:var(--brand-tint);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--brand);
+    flex-shrink:0;
   }
-  .contact-box .note{
+  .trust-item .ico svg{width:18px;height:18px}
+  .trust-item .ttl{
+    font-size:15px;font-weight:600;
+    letter-spacing:-0.2px;
+    line-height:1.25;
+    color:var(--text);
+    margin-bottom:3px;
+  }
+  .trust-item .lbl{
+    font-size:12.5px;
     color:var(--text-2);
-    font-size:15px;
-    line-height:1.5;
-    margin-bottom:28px;
+    line-height:1.45;
   }
-  .contact-list{display:grid;gap:10px;text-align:left}
+
+  /* CONTACT */
+  .contact-list{display:grid;gap:10px}
   .contact-row{
     display:flex;align-items:center;gap:14px;
-    background:var(--bg-3);
+    background:var(--bg-2);
     border:1px solid var(--border);
     border-radius:16px;
     padding:14px 16px;
-    transition:border-color .2s ease,background .2s ease;
+    transition:border-color .2s ease;
   }
   .contact-row:hover{border-color:var(--border-2)}
   .contact-row .ico{
@@ -300,7 +304,7 @@
   .contact-row .ico svg{width:18px;height:18px}
   .contact-row .lbl{
     font-family:'Geist Mono',monospace;
-    font-size:11px;font-weight:500;
+    font-size:10.5px;font-weight:500;
     letter-spacing:0.5px;
     text-transform:uppercase;
     color:var(--text-3);
@@ -312,13 +316,34 @@
     color:var(--text);
   }
 
-  form{display:grid;gap:10px;margin-top:24px;text-align:left}
+  /* FORM */
+  .form-block{
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px 18px;
+    box-shadow:var(--shadow-card);
+    margin-top:18px;
+  }
+  .form-block h3{
+    font-size:19px;font-weight:600;
+    letter-spacing:-0.3px;
+    line-height:1.25;
+    margin-bottom:6px;
+  }
+  .form-block .form-desc{
+    color:var(--text-2);
+    font-size:13.5px;
+    line-height:1.5;
+    margin-bottom:16px;
+  }
+  form{display:grid;gap:10px}
   input,textarea{
     width:100%;
     background:var(--bg-3);
     border:1px solid var(--border-2);
     border-radius:9999px;
-    padding:14px 20px;
+    padding:13px 18px;
     color:var(--text);
     font-family:inherit;
     font-size:16px;
@@ -331,8 +356,10 @@
   textarea{
     border-radius:16px;
     resize:vertical;
-    min-height:100px;
+    min-height:90px;
     line-height:1.5;
+    padding-top:14px;
+    padding-bottom:14px;
   }
   input::placeholder,textarea::placeholder{color:var(--text-4)}
   input:focus,textarea:focus{
@@ -342,11 +369,11 @@
 
   .consent{
     display:flex;align-items:flex-start;gap:10px;
-    font-size:13px;
+    font-size:12.5px;
     color:var(--text-2);
     line-height:1.5;
     cursor:pointer;
-    padding:4px 8px 0;
+    padding:6px 8px 0;
   }
   .consent input{
     width:18px;height:18px;flex-shrink:0;margin-top:1px;
@@ -364,7 +391,7 @@
   }
 
   .form-note{
-    font-size:12px;
+    font-size:11.5px;
     color:var(--text-3);
     text-align:center;
     padding:4px 8px;
@@ -377,119 +404,127 @@
     background:var(--brand-tint);
     border:1px solid rgba(24,226,153,0.3);
     color:var(--brand);
-    font-size:14px;font-weight:500;
+    font-size:13.5px;font-weight:500;
     text-align:center;
   }
-  .success.show{display:block;animation:fade .3s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .success.show{display:block;animation:fadeIn .3s ease}
 
-  footer{
-    padding:40px 0 32px;
+  /* FOOTER (на главном) */
+  .foot{
+    margin-top:24px;
+    padding-top:20px;
     border-top:1px solid var(--border);
     text-align:center;
     color:var(--text-3);
-    font-size:13px;
+    font-size:12.5px;
     line-height:1.7;
   }
-  footer .brand{
-    font-size:17px;font-weight:600;
+  .foot .brand{
+    font-size:15px;font-weight:600;
     letter-spacing:-0.3px;
     color:var(--text);
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
-  footer .links{
-    margin-top:16px;
-    display:flex;justify-content:center;gap:20px;
-    font-size:12px;flex-wrap:wrap;
+  .foot .links{
+    margin-top:12px;
+    display:flex;justify-content:center;gap:16px;
+    font-size:11.5px;flex-wrap:wrap;
   }
-  footer .links a{color:var(--text-3)}
-  footer .links a:hover{color:var(--brand)}
+  .foot .links a{color:var(--text-3)}
+  .foot .links a:hover{color:var(--brand)}
 
-  .sticky{
-    position:fixed;left:0;right:0;bottom:0;
-    padding:10px 16px calc(10px + var(--safe-b));
-    background:rgba(13,13,13,0.85);
-    -webkit-backdrop-filter:blur(16px) saturate(160%);
-    backdrop-filter:blur(16px) saturate(160%);
+  /* TABBAR */
+  .tabbar{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:480px;
+    padding:8px 12px calc(8px + var(--safe-b));
+    background:rgba(13,13,13,0.82);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    backdrop-filter:blur(20px) saturate(180%);
     border-top:1px solid var(--border);
-    display:flex;gap:10px;
-    z-index:50;
-    transition:transform .3s ease;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:4px;
+    z-index:100;
   }
-  .sticky.hidden{transform:translateY(120%)}
-  .sticky .btn{min-height:50px;font-size:15px}
-  .sticky .btn-wa{flex:0 0 auto;width:52px;padding:0}
+  .tab{
+    flex:1;
+    background:transparent;
+    border:none;
+    color:var(--text-3);
+    padding:0;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    transition:color .15s ease;
+  }
+  .tab-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:3px;
+    padding:8px 12px;
+    border-radius:9999px;
+    min-width:64px;
+    transition:background .2s ease,color .2s ease,transform .15s ease;
+  }
+  .tab-inner svg{
+    width:22px;height:22px;
+    stroke-width:1.9;
+    transition:stroke-width .2s ease;
+  }
+  .tab-inner span{
+    font-size:10.5px;
+    font-weight:500;
+    letter-spacing:-0.05px;
+    line-height:1;
+  }
+  .tab:active .tab-inner{transform:scale(.94)}
+  .tab.active{
+    color:var(--brand);
+  }
+  .tab.active .tab-inner{
+    background:var(--brand-tint);
+  }
+  .tab.active .tab-inner svg{stroke-width:2.2}
 
   @media (min-width:600px){
-    body{padding-bottom:0}
-    .sticky{display:none}
-    section{padding:80px 0}
-    .hero{padding:calc(80px + var(--safe-t)) 0 88px}
-    .hero-actions{flex-direction:row;justify-content:center;flex-wrap:wrap}
-    .hero-actions .btn{width:auto;min-width:190px}
-    .cards{grid-template-columns:1fr 1fr;gap:14px}
-    .trust{grid-template-columns:repeat(4,1fr);gap:14px}
-    .avatar{width:128px;height:128px;font-size:42px}
-    .contact-box{padding:48px 40px}
-    .section-sub{font-size:17px}
+    .app{
+      box-shadow:0 0 0 1px var(--border), 0 30px 80px rgba(0,0,0,0.5);
+    }
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap hero-inner">
-    <div class="status"><span class="dot"></span>Доступен 24/7</div>
-    <div class="avatar">АО</div>
-    <h1>Алексей Нуркенов</h1>
-    <div class="role">Ритуальный агент</div>
-    <p class="lead">Организую похороны и прощание с уважением, спокойствием и без лишних хлопот для семьи. Возьму на себя все формальности — от документов до прощального зала.</p>
-    <div class="hero-actions">
-      <a href="tel:+79114678645" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Позвонить сейчас
-      </a>
-      <a href="#contact" class="btn btn-outline">Написать</a>
+<div class="app">
+
+  <!-- ============ ЭКРАН 1: ГЛАВНАЯ ============ -->
+  <section class="screen" id="screen-home">
+    <div class="hero">
+      <div class="status"><span class="dot"></span>Доступен 24/7</div>
+      <div class="avatar">АО</div>
+      <h1>Алексей Нуркенов</h1>
+      <div class="role">Ритуальный агент</div>
+      <p class="lead">Организую похороны и прощание с уважением, спокойствием и без лишних хлопот для семьи.</p>
+      <div class="hero-actions">
+        <a href="tel:+79114678645" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Позвонить сейчас
+        </a>
+        <button type="button" class="btn btn-outline" data-goto="contacts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Оставить заявку
+        </button>
+      </div>
     </div>
-  </div>
-</header>
 
-<section>
-  <div class="wrap">
-    <h2 class="section-title">Помощь на каждом этапе</h2>
-    <p class="section-sub">Полный цикл организации — вам не придётся ни о чём договариваться самостоятельно.</p>
-    <div class="cards">
-      <div class="card"><h3>Организация похорон</h3><p>Все кладбища города и области. Полное сопровождение церемонии.</p></div>
-      <div class="card"><h3>Кремация</h3><p>Организация кремации, подбор урны, захоронение праха.</p></div>
-      <div class="card"><h3>Памятники</h3><p>Изготовление и установка памятников, ограды, плитки. Уход за захоронением.</p></div>
-      <div class="card"><h3>Груз 200</h3><p>Отправка в любую точку мира. Полное документальное сопровождение.</p></div>
-      <div class="card"><h3>Юридическое сопровождение</h3><p>Консультация бесплатно. Оформление документов, пособия, свидетельства.</p></div>
-      <div class="card"><h3>Венки и цветы</h3><p>Ритуальные венки, корзины, траурные ленты с надписью. Доставка к церемонии.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<section>
-  <div class="wrap">
-    <h2 class="section-title">Как всё проходит</h2>
-    <p class="section-sub">Четыре спокойных шага — остальное я беру на себя.</p>
-    <div class="steps">
-      <div class="step"><div class="num">01</div><div><h3>Звонок или сообщение</h3><p>Вы связываетесь со мной в любое время. Я задаю минимум вопросов, чтобы понять ситуацию.</p></div></div>
-      <div class="step"><div class="num">02</div><div><h3>Встреча и договорённости</h3><p>Приезжаю к вам или встречаемся на месте. Обсуждаем детали, показываю прозрачную смету без скрытых платежей.</p></div></div>
-      <div class="step"><div class="num">03</div><div><h3>Организация церемонии</h3><p>Занимаюсь документами, транспортом, залом прощания, кладбищем. Вы просто приезжаете попрощаться.</p></div></div>
-      <div class="step"><div class="num">04</div><div><h3>Помощь после</h3><p>Оформление пособия, установка памятника, уход за захоронением. Остаюсь на связи и после церемонии.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="divider"></div></div>
-
-<section>
-  <div class="wrap">
-    <h2 class="section-title">Почему мне доверяют</h2>
-    <p class="section-sub">Работаю официально, говорю прямо и не навязываю лишнего.</p>
     <div class="trust">
       <div class="trust-item">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
@@ -520,28 +555,76 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-box">
-      <h2>Свяжитесь со мной</h2>
-      <p class="note">Отвечаю в любое время. Консультация бесплатна — даже если вы просто хотите уточнить порядок действий.</p>
-      <div class="contact-list">
-        <a href="tel:+79114678645" class="contact-row">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div><div class="lbl">Телефон · 24/7</div><div class="val">+7 911 467-86-45</div></div>
-        </a>
-        <a href="https://wa.me/79114678645" target="_blank" rel="noopener" class="contact-row">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg></div>
-          <div><div class="lbl">WhatsApp</div><div class="val">Написать сообщение</div></div>
-        </a>
-        <a href="https://t.me/username" target="_blank" rel="noopener" class="contact-row">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3L19 19.1c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.24.24-.44.44-.9.44l.32-4.6 8.4-7.6c.37-.32-.08-.5-.56-.18L7.6 13.1 3.1 11.7c-1-.3-1-1 .2-1.5l17.5-6.8c.8-.3 1.5.2 1.2 1z"/></svg></div>
-          <div><div class="lbl">Telegram</div><div class="val">@username</div></div>
-        </a>
+    <div class="foot">
+      <div class="brand">Алексей Нуркенов</div>
+      Ритуальные услуги · Круглосуточно<br>
+      Все кладбища города и области<br>
+      <span style="opacity:.7">ИП Нуркенов А. О.</span>
+      <div class="links">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="consent.html">Согласие на обработку ПД</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ ЭКРАН 2: УСЛУГИ ============ -->
+  <section class="screen" id="screen-services" hidden>
+    <div class="section-head">
+      <h2 class="section-title">Услуги</h2>
+      <p class="section-sub">Полный цикл организации — вам не придётся ни о чём договариваться самостоятельно.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h3>Организация похорон</h3><p>Все кладбища города и области. Полное сопровождение церемонии.</p></div>
+      <div class="card"><h3>Кремация</h3><p>Организация кремации, подбор урны, захоронение праха.</p></div>
+      <div class="card"><h3>Памятники</h3><p>Изготовление и установка памятников, ограды, плитки. Уход за захоронением.</p></div>
+      <div class="card"><h3>Груз 200</h3><p>Отправка в любую точку мира. Полное документальное сопровождение.</p></div>
+      <div class="card"><h3>Юридическое сопровождение</h3><p>Консультация бесплатно. Оформление документов, пособия, свидетельства.</p></div>
+      <div class="card"><h3>Венки и цветы</h3><p>Ритуальные венки, корзины, траурные ленты с надписью. Доставка к церемонии.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ ЭКРАН 3: ЭТАПЫ ============ -->
+  <section class="screen" id="screen-steps" hidden>
+    <div class="section-head">
+      <h2 class="section-title">Как всё проходит</h2>
+      <p class="section-sub">Четыре спокойных шага — остальное я беру на себя.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="num">01</div><div><h3>Звонок или сообщение</h3><p>Вы связываетесь со мной в любое время. Я задаю минимум вопросов, чтобы понять ситуацию.</p></div></div>
+      <div class="step"><div class="num">02</div><div><h3>Встреча и договорённости</h3><p>Приезжаю к вам или встречаемся на месте. Обсуждаем детали, показываю прозрачную смету без скрытых платежей.</p></div></div>
+      <div class="step"><div class="num">03</div><div><h3>Организация церемонии</h3><p>Занимаюсь документами, транспортом, залом прощания, кладбищем. Вы просто приезжаете попрощаться.</p></div></div>
+      <div class="step"><div class="num">04</div><div><h3>Помощь после</h3><p>Оформление пособия, установка памятника, уход за захоронением. Остаюсь на связи и после церемонии.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============ ЭКРАН 4: КОНТАКТЫ ============ -->
+  <section class="screen" id="screen-contacts" hidden>
+    <div class="section-head">
+      <h2 class="section-title">Контакты</h2>
+      <p class="section-sub">Отвечаю в любое время. Консультация бесплатна.</p>
+    </div>
+
+    <div class="contact-list">
+      <a href="tel:+79114678645" class="contact-row">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="lbl">Телефон · 24/7</div><div class="val">+7 911 467-86-45</div></div>
+      </a>
+      <a href="https://wa.me/79114678645" target="_blank" rel="noopener" class="contact-row">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg></div>
+        <div><div class="lbl">WhatsApp</div><div class="val">Написать сообщение</div></div>
+      </a>
+      <a href="https://t.me/username" target="_blank" rel="noopener" class="contact-row">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3L19 19.1c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.24.24-.44.44-.9.44l.32-4.6 8.4-7.6c.37-.32-.08-.5-.56-.18L7.6 13.1 3.1 11.7c-1-.3-1-1 .2-1.5l17.5-6.8c.8-.3 1.5.2 1.2 1z"/></svg></div>
+        <div><div class="lbl">Telegram</div><div class="val">@username</div></div>
+      </a>
+    </div>
+
+    <div class="form-block">
+      <h3>Оставить заявку</h3>
+      <p class="form-desc">Опишите ситуацию — свяжусь в течение нескольких минут.</p>
 
       <form id="leadForm" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="545a1814-6bd2-476c-a379-02874c3d91d2">
@@ -560,98 +643,123 @@
         <div class="success" id="formSuccess">Заявка отправлена. Я свяжусь с вами в течение нескольких минут.</div>
       </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <div class="brand">Алексей Нуркенов</div>
-    Ритуальные услуги · Работаю круглосуточно<br>
-    Все кладбища города и области<br>
-    <span style="opacity:.7">ИП Нуркенов А. О.</span>
-    <div class="links">
-      <a href="privacy.html">Политика конфиденциальности</a>
-      <a href="consent.html">Согласие на обработку ПД</a>
-    </div>
-  </div>
-</footer>
-
-<div class="sticky" id="stickyBar">
-  <a href="tel:+79114678645" class="btn btn-primary" style="flex:1">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Позвонить
-  </a>
-  <a href="https://wa.me/79114678645" target="_blank" rel="noopener" class="btn btn-wa">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.2-.31A8.2 8.2 0 1 1 12 20.2z"/></svg>
-  </a>
 </div>
 
+<!-- ============ НИЖНЯЯ НАВИГАЦИЯ ============ -->
+<nav class="tabbar" role="tablist">
+  <button class="tab active" data-goto="home" type="button" role="tab" aria-label="Главная">
+    <span class="tab-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9"/><path d="M5 10v10a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V10"/></svg>
+      <span>Главная</span>
+    </span>
+  </button>
+  <button class="tab" data-goto="services" type="button" role="tab" aria-label="Услуги">
+    <span class="tab-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      <span>Услуги</span>
+    </span>
+  </button>
+  <button class="tab" data-goto="steps" type="button" role="tab" aria-label="Этапы">
+    <span class="tab-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <span>Этапы</span>
+    </span>
+  </button>
+  <button class="tab" data-goto="contacts" type="button" role="tab" aria-label="Контакты">
+    <span class="tab-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Контакты</span>
+    </span>
+  </button>
+</nav>
+
 <script>
-document.getElementById('leadForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var form = this;
-  var btn = form.querySelector('button[type="submit"]');
-  var original = btn.textContent;
-  btn.textContent = 'Отправляю…';
-  btn.disabled = true;
+  // ====== НАВИГАЦИЯ МЕЖДУ ЭКРАНАМИ ======
+  var tabs = document.querySelectorAll('.tab');
+  var screens = document.querySelectorAll('.screen');
 
-  var data = Object.fromEntries(new FormData(form));
+  function showScreen(id){
+    screens.forEach(function(s){ s.hidden = true; });
+    tabs.forEach(function(t){ t.classList.remove('active'); });
 
-  fetch('/api/telegram', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: data.name,
-      phone: data.phone,
-      message: data.message || ''
-    })
-  }).catch(function(err){ console.log('TG error:', err); });
+    var target = document.getElementById('screen-' + id);
+    if (target) target.hidden = false;
 
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(res){
-    form.reset();
-    btn.textContent = original;
-    btn.disabled = false;
-    if (res.success) {
-      document.getElementById('formSuccess').classList.add('show');
-      if (navigator.vibrate) navigator.vibrate(35);
-      setTimeout(function(){ document.getElementById('formSuccess').classList.remove('show'); }, 7000);
-    } else {
-      alert('Не удалось отправить: ' + (res.message || 'попробуйте ещё раз'));
-    }
-  })
-  .catch(function(){
-    btn.textContent = original;
-    btn.disabled = false;
-    alert('Ошибка сети. Проверьте интернет и попробуйте снова.');
-  });
-});
+    var activeTab = document.querySelector('.tab[data-goto="' + id + '"]');
+    if (activeTab) activeTab.classList.add('active');
 
-(function(){
-  var sticky = document.getElementById('stickyBar');
-  var contact = document.getElementById('contact');
-  if (!sticky || !contact || window.innerWidth >= 600) return;
-  new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      sticky.classList.toggle('hidden', e.isIntersecting);
-    });
-  }, { threshold: 0.35 }).observe(contact);
-})();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (navigator.vibrate) navigator.vibrate(8);
+  }
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').then(function(reg){
-      reg.update();
-    }).catch(function(err){
-      console.log('SW registration failed:', err);
+  document.querySelectorAll('[data-goto]').forEach(function(el){
+    el.addEventListener('click', function(){
+      showScreen(this.getAttribute('data-goto'));
     });
   });
-}
+
+  // ====== ФОРМА ======
+  var leadForm = document.getElementById('leadForm');
+  if (leadForm) {
+    leadForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var form = this;
+      var btn = form.querySelector('button[type="submit"]');
+      var original = btn.textContent;
+      btn.textContent = 'Отправляю…';
+      btn.disabled = true;
+
+      var data = Object.fromEntries(new FormData(form));
+
+      fetch('/api/telegram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          message: data.message || ''
+        })
+      }).catch(function(err){ console.log('TG error:', err); });
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        form.reset();
+        btn.textContent = original;
+        btn.disabled = false;
+        if (res.success) {
+          var s = document.getElementById('formSuccess');
+          s.classList.add('show');
+          if (navigator.vibrate) navigator.vibrate(35);
+          setTimeout(function(){ s.classList.remove('show'); }, 7000);
+        } else {
+          alert('Не удалось отправить: ' + (res.message || 'попробуйте ещё раз'));
+        }
+      })
+      .catch(function(){
+        btn.textContent = original;
+        btn.disabled = false;
+        alert('Ошибка сети. Проверьте интернет и попробуйте снова.');
+      });
+    });
+  }
+
+  // ====== SERVICE WORKER ======
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').then(function(reg){
+        reg.update();
+      }).catch(function(err){
+        console.log('SW registration failed:', err);
+      });
+    });
+  }
 </script>
 </body>
 </html>
