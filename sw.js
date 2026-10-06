@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ritual-8';
+const CACHE_NAME = 'ritual-9';
 const ASSETS = [
   './',
   './index.html',
