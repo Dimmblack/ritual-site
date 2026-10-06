@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
 <meta name="theme-color" content="#0d0d0d">
 <title>Ритуальные услуги — Алексей Нуркенов | 24/7</title>
-<meta name="description" content="Круглосуточная помощь в организации похорон. Все кладбища города и области. Кремация, памятники, груз 200. Консультация бесплатно.">
+<meta name="description" content="Круглосуточная помощь в организации похорон. Все кладбища Калининградской области. Кремация, памятники, груз 200. Консультация бесплатно.">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -73,14 +73,14 @@
   /* HERO */
   .hero{
     text-align:center;
-    padding:32px 0 24px;
+    padding:28px 0 24px;
     position:relative;
   }
   .hero::before{
     content:'';
     position:absolute;
     top:-40px;left:50%;transform:translateX(-50%);
-    width:120%;height:300px;
+    width:120%;height:280px;
     background:radial-gradient(ellipse 70% 60% at 50% 30%, rgba(24,226,153,0.18) 0%, transparent 65%);
     pointer-events:none;
     z-index:0;
@@ -95,7 +95,7 @@
     font-family:'Geist Mono',monospace;
     font-size:11px;font-weight:500;letter-spacing:0.6px;
     text-transform:uppercase;
-    margin-bottom:24px;
+    margin-bottom:20px;
     border:1px solid rgba(24,226,153,0.25);
   }
   .dot{
@@ -108,17 +108,6 @@
     0%{box-shadow:0 0 0 0 rgba(24,226,153,0.5)}
     70%{box-shadow:0 0 0 8px rgba(24,226,153,0)}
     100%{box-shadow:0 0 0 0 rgba(24,226,153,0)}
-  }
-
-  .avatar{
-    width:100px;height:100px;border-radius:50%;
-    margin:0 auto 20px;
-    background:var(--bg-3);
-    border:1px solid var(--border-2);
-    display:flex;align-items:center;justify-content:center;
-    font-size:32px;font-weight:600;
-    letter-spacing:-0.8px;
-    color:var(--text);
   }
 
   .hero h1{
@@ -146,7 +135,7 @@
 
   .hero-actions{
     display:flex;flex-direction:column;gap:10px;
-    margin-top:28px;
+    margin-top:24px;
   }
 
   /* BUTTONS */
@@ -191,7 +180,7 @@
     color:var(--text-2);
     font-size:14.5px;
     line-height:1.5;
-    max-width:400px;
+    max-width:420px;
   }
 
   /* CARDS */
@@ -316,7 +305,71 @@
     line-height:1.55;
   }
 
+  /* СПИСОК КЛАДБИЩ */
+  .cem-group{margin-top:4px}
+  .cem-group h3{
+    font-size:17px;font-weight:600;
+    letter-spacing:-0.2px;
+    color:var(--text);
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--border);
+  }
+  .cem-list{
+    list-style:none;
+    display:grid;
+    gap:6px;
+    margin-bottom:20px;
+  }
+  .cem-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    font-size:14px;
+    color:var(--text-2);
+    line-height:1.5;
+    padding:8px 12px;
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    border-radius:12px;
+  }
+  .cem-list li::before{
+    content:'';
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--brand);
+    flex-shrink:0;
+    margin-top:8px;
+  }
+  .cem-note{
+    margin-top:8px;
+    font-size:12.5px;
+    color:var(--text-3);
+    line-height:1.5;
+    padding:12px 14px;
+    background:var(--brand-tint);
+    border:1px solid rgba(24,226,153,0.2);
+    border-radius:12px;
+  }
+
   /* GALLERY */
+  .gal-section{margin-bottom:32px}
+  .gal-section:last-child{margin-bottom:0}
+  .gal-title{
+    font-size:17px;font-weight:600;
+    letter-spacing:-0.2px;
+    color:var(--text);
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .gal-title::before{
+    content:'';
+    width:3px;height:18px;
+    background:var(--brand);
+    border-radius:2px;
+  }
   .gallery{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -707,7 +760,6 @@
   <section class="screen" id="screen-home">
     <div class="hero">
       <div class="status"><span class="dot"></span>Доступен 24/7</div>
-      <div class="avatar">АО</div>
       <h1>Алексей Нуркенов</h1>
       <div class="role">Ритуальный агент</div>
       <p class="lead">Организую похороны и прощание с уважением, спокойствием и без лишних хлопот для семьи.</p>
@@ -738,7 +790,7 @@
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
           <div class="ttl">Все кладбища</div>
-          <div class="lbl">Города и области</div>
+          <div class="lbl">Калининградской области</div>
         </div>
       </div>
 
@@ -764,7 +816,7 @@
     <div class="foot">
       <div class="brand">Алексей Нуркенов</div>
       Ритуальные услуги · Круглосуточно<br>
-      Все кладбища города и области<br>
+      Калининградская область<br>
       <span style="opacity:.7">ИП Нуркенов А. О.</span>
       <div class="links">
         <a href="privacy.html">Политика конфиденциальности</a>
@@ -781,7 +833,7 @@
     </div>
 
     <div class="cards">
-      <div class="card"><h3>Организация похорон</h3><p>Все кладбища города и области. Полное сопровождение церемонии.</p></div>
+      <div class="card"><h3>Организация похорон</h3><p>Все кладбища Калининградской области. Полное сопровождение церемонии.</p></div>
       <div class="card"><h3>Кремация</h3><p>Организация кремации, подбор урны, захоронение праха.</p></div>
       <div class="card"><h3>Памятники</h3><p>Изготовление и установка памятников, ограды, плитки. Уход за захоронением.</p></div>
       <div class="card"><h3>Груз 200</h3><p>Отправка в любую точку мира. Полное документальное сопровождение.</p></div>
@@ -794,46 +846,75 @@
   <section class="screen" id="screen-gallery" hidden>
     <div class="section-head">
       <h2 class="section-title">Галерея</h2>
-      <p class="section-sub">Примеры работ и церемоний. Скоро добавим больше фотографий.</p>
+      <p class="section-sub">Примеры работ и церемоний по направлениям.</p>
     </div>
 
-    <!-- ПЛЕЙСХОЛДЕРЫ. Когда появятся реальные фото — замени <div class="ph">…</div> на <img src="твоё-фото.jpg" alt="" style="width:100%;height:100%;object-fit:cover"> -->
-    <div class="gallery">
-      <div class="gallery-item wide">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 01</span>
+    <!-- ============ РАЗДЕЛ 1: ТРАНСПОРТ ============ -->
+    <div class="gal-section">
+      <div class="gal-title">Транспорт</div>
+      <!-- ЗАМЕНА ФОТО: замени <div class="ph">...</div> на <img src="фото.jpg" alt="" style="width:100%;height:100%;object-fit:cover"> -->
+      <div class="gallery">
+        <div class="gallery-item wide">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Фото 01</span>
+          </div>
         </div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 02</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 03</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 04</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 05</span></div></div>
       </div>
-      <div class="gallery-item">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 02</span>
+    </div>
+
+    <!-- ============ РАЗДЕЛ 2: ЦЕРЕМОНИИ ============ -->
+    <div class="gal-section">
+      <div class="gal-title">Церемонии</div>
+      <div class="gallery">
+        <div class="gallery-item wide">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Фото 06</span>
+          </div>
         </div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 07</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 08</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 09</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 10</span></div></div>
       </div>
-      <div class="gallery-item">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 03</span>
+    </div>
+
+    <!-- ============ РАЗДЕЛ 3: ПАМЯТНИКИ ============ -->
+    <div class="gal-section">
+      <div class="gal-title">Памятники и благоустройство</div>
+      <div class="gallery">
+        <div class="gallery-item wide">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Фото 11</span>
+          </div>
         </div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 12</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 13</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 14</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 15</span></div></div>
       </div>
-      <div class="gallery-item">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 04</span>
+    </div>
+
+    <!-- ============ РАЗДЕЛ 4: ВЕНКИ И ЦВЕТЫ ============ -->
+    <div class="gal-section">
+      <div class="gal-title">Венки и цветы</div>
+      <div class="gallery">
+        <div class="gallery-item wide">
+          <div class="ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Фото 16</span>
+          </div>
         </div>
-      </div>
-      <div class="gallery-item">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 05</span>
-        </div>
-      </div>
-      <div class="gallery-item wide">
-        <div class="ph">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Фото 06</span>
-        </div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 17</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 18</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 19</span></div></div>
+        <div class="gallery-item"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg><span>Фото 20</span></div></div>
       </div>
     </div>
   </section>
@@ -883,7 +964,7 @@
     </div>
   </section>
 
-  <!-- ЭКРАН 5: ДЕТАЛИ (динамический) -->
+  <!-- ЭКРАН 5: ДЕТАЛИ -->
   <section class="screen" id="screen-detail" hidden>
     <button class="back-btn" type="button" id="backBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -940,16 +1021,54 @@
       sub: 'Отвечаю 24/7, без выходных и праздников.',
       body: `
         <p class="lead-p">Если беда случилась ночью, в выходные или в праздники — звоните в любое время. Я отвечаю лично, без диспетчеров и переадресаций.</p>
-        <p>Приеду в течение 40 минут по городу, помогу с первых минут: подскажу порядок действий, вызову необходимые службы, оформлю документы. Дальше возьму на себя всю организацию.</p>
+        <p>Приеду в течение 40 минут по Калининграду, помогу с первых минут: подскажу порядок действий, вызову необходимые службы, оформлю документы. Дальше возьму на себя всю организацию.</p>
         <p>Не нужно ждать утра, чтобы что-то решать. Один звонок — и я уже в пути.</p>
       `
     },
     'cemetery': {
       icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
       title: 'Все кладбища',
-      sub: 'Города и области — открытые и закрытые.',
+      sub: 'Калининград и Калининградская область — открытые и закрытые.',
       body: `
-        <p class="lead-p">Работаю со всеми кладбищами города и области — и открытыми, и закрытыми. Помогу подобрать место, оформить документы и организовать церемонию.</p>
+        <p class="lead-p">Работаю со всеми кладбищами Калининграда и области. Помогу подобрать место, оформить документы и организовать церемонию.</p>
+
+        <div class="cem-group">
+          <h3>Калининград</h3>
+          <ul class="cem-list">
+            <li>Менделеевское кладбище</li>
+            <li>Цветковское кладбище</li>
+            <li>Славянское кладбище</li>
+            <li>Старое кладбище (ул. А. Невского)</li>
+            <li>Кладбище по Балтийскому шоссе</li>
+          </ul>
+        </div>
+
+        <div class="cem-group">
+          <h3>Калининградская область</h3>
+          <ul class="cem-list">
+            <li>Гурьевск и Гурьевский район</li>
+            <li>Черняховск</li>
+            <li>Советск</li>
+            <li>Балтийск</li>
+            <li>Светлогорск</li>
+            <li>Зеленоградск</li>
+            <li>Гвардейск</li>
+            <li>Правдинск</li>
+            <li>Багратионовск</li>
+            <li>Мамоново</li>
+            <li>Полесск</li>
+            <li>Славск</li>
+            <li>Неман</li>
+            <li>Краснознаменск</li>
+            <li>Озёрск</li>
+            <li>Гусев</li>
+          </ul>
+        </div>
+
+        <div class="cem-note">
+          Если нужного кладбища нет в списке — позвоните, уточню по конкретному месту.
+        </div>
+
         <p>Если нужна кремация — подберу крематорий, помогу с урной и организую захоронение праха или размещение в колумбарии.</p>
         <p>Отдельно занимаюсь благоустройством: изготовление и установка памятников, ограды, плитки, уход за захоронением.</p>
       `
